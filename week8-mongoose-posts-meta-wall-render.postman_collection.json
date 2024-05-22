@@ -1,0 +1,789 @@
+{
+	"info": {
+		"_postman_id": "7e3b9fcb-0f01-43e8-939e-3fed65084a5d",
+		"name": "week8-mongoose-posts-meta-wall-render",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19843147",
+		"_collection_link": "https://martian-capsule-262445.postman.co/workspace/My-Workspace~77fd6e3f-fc13-4924-87b5-63e25cb2e01e/collection/19843147-7e3b9fcb-0f01-43e8-939e-3fed65084a5d?action=share&source=collection_link&creator=19843147"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "註冊",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jiang002\",\r\n    \"email\":\"jiang002@gmail.com\",\r\n    \"password\":\"jiang002\",\r\n    \"confirmPassword\": \"jiang002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/sign_up",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jiang001@gmail.com\",\r\n    \"password\":\"jiang001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "檢視個人資訊",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新個人資訊",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"wenwen2024\",\r\n    \"sex\": \"female\",\r\n    \"photo\": \"https://images.unsplash.com/photo-1638803040283-7a5ffd48dad5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新密碼",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"jiang2024new\",\r\n    \"confirmPassword\": \"jiang2024new\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/updatePassword",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得按讚列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/getLikeList",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得所有使用者",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/getAllUsers",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "取得所有貼文",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "003",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"664d4e7812ec42242ab3e570\",\r\n  \"content\": \"POST002\",\r\n  \"photo\": \"https://images.unsplash.com/photo-1713815540105-9cc73ccd4290?q=80&w=2091&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除全部貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單一貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/663df230973a68377588c7ca",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"663df230973a68377588c7ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "編輯單一貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"content\": \"new post fix\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/663045e4efb3ddcf1ded87e4",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"663045e4efb3ddcf1ded87e4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一貼文",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/664ab238a7e66ba89f601f20",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664ab238a7e66ba89f601f20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得使用者所有貼文",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/user/664d4e7812ec42242ab3e570/posts",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"user",
+								"664d4e7812ec42242ab3e570",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload",
+			"item": [
+				{
+					"name": "上傳檔案",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/User/Desktop/截圖/mail.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/upload/file",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"upload",
+								"file"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "貼文按讚功能",
+			"item": [
+				{
+					"name": "貼文按讚",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/664d4ed012ec42242ab3e574/likes",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664d4ed012ec42242ab3e574",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消按讚",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/664c9d61ccffe4c042265666/likes",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664c9d61ccffe4c042265666",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "貼文留言功能",
+			"item": [
+				{
+					"name": "新增貼文的留言",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\" : \"第二則留言\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/664d4ed012ec42242ab3e574/comment",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664d4ed012ec42242ab3e574",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除貼文的留言",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\" : \"第一則留言\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/664d5583c4ad62eb7d4fb2ed/comment",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664d5583c4ad62eb7d4fb2ed",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得使用者所有留言",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/posts/user/664d4e7812ec42242ab3e570",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"user",
+								"664d4e7812ec42242ab3e570"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "追蹤朋友功能",
+			"item": [
+				{
+					"name": "追蹤",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/664d4e7812ec42242ab3e570/follow",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"664d4e7812ec42242ab3e570",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消追蹤",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/664ab20ba7e66ba89f601f1a/unfollow",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"664ab20ba7e66ba89f601f1a",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人追蹤名單",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://meta-wall-59ug.onrender.com/users/following",
+							"protocol": "https",
+							"host": [
+								"meta-wall-59ug",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
