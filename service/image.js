@@ -13,7 +13,14 @@ const upload = multer({
   },
   // 檔案格式過濾器，cb 是 callback 的縮寫
   fileFilter(req, file, cb) {
-    // console.log(file);
+    const fileSize = parseInt(req.headers["content-length"]);
+
+    // 檢查檔案大小
+    if (fileSize > 2 * 1024 * 1024) {
+      // 如果檔案大小超過限制，就回傳錯誤，error 到全域的統一錯誤處理
+      cb(new Error("檔案大小超過 2MB 的限制。"));
+    }
+
     // 檢查副檔名檔案格式
     const ext = path.extname(file.originalname).toLowerCase();
     if (ext !== ".jpg" && ext !== ".png" && ext !== ".jpeg") {

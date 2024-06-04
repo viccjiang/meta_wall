@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "user",
-      required: [true, "貼文 ID 未填寫"],
+      required: [true, "User ID 未填寫"],
     },
     content: {
       type: String,

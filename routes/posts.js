@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 var express = require("express"); // 引入 express
 var router = express.Router(); // 使用 express 的 Router
 
@@ -61,13 +63,14 @@ router.post(
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
     const { body } = req;
+    const id = req.user.id; // 透過 req.user 取得 id
 
     if (body.content == undefined) {
       return next(appError(400, "你沒有填寫 content 資料"));
     }
 
     const newPost = await Post.create({
-      user: body.user,
+      user: id, // 透過 req.user 取得 id
       content: body.content.trim(),
       image: body.photo,
     });
@@ -119,8 +122,23 @@ router.get(
      * #swagger.tags = ['Posts - 貼文']
      * #swagger.description = '取得單一貼文'
      */
+
+    const postID = req.params.id;
+
+    // 參考其他同學寫法
+    if (postID === undefined || !mongoose.isValidObjectId(postID)) {
+      const message = "無此 id 或 id 格式錯誤";
+      return next(appError(400, message));
+    }
+
     const post = await Post.findById(req.params.id).populate("user");
-    handleSuccess(res, post);
+
+    if (post !== null) {
+      handleSuccess(res, post);
+    } else {
+      const message = "無此 id 或 id 格式錯誤";
+      return next(appError(400, message));
+    }
   })
 );
 
@@ -170,8 +188,10 @@ router.post(
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
     const _id = req.params.id;
-    const userId = req.user.id;
-    console.log(_id, userId);
+
+    if (!mongoose.isValidObjectId(_id)) {
+      return next(appError(400, "無此 id 或 id 格式錯誤"));
+    }
 
     const result = await Post.findOneAndUpdate(
       { _id },
@@ -200,6 +220,11 @@ router.delete(
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
     const _id = req.params.id;
+
+    if (!mongoose.isValidObjectId(_id)) {
+      return next(appError(400, "無此 id 或 id 格式錯誤"));
+    }
+
     await Post.findOneAndUpdate(
       { _id },
       { $pull: { likes: req.user.id } },
@@ -242,7 +267,7 @@ router.post(
 
 // 刪除貼文的留言功能
 router.delete(
-  "/:commentId/comment",
+  "/comment/:commentId",
   isAuth, // 驗證使用者
   handleErrorAsync(async (req, res, next) => {
     /**
@@ -250,13 +275,16 @@ router.delete(
      * #swagger.description = '刪除留言'
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
-    const comment = await Comment.findByIdAndDelete(req.params.id);
 
-    if (comment !== null) {
-      handleSuccess(res, comment);
-    } else {
-      return next(appError(400, "欄位未填寫正確或無此 id"));
-    }
+    // 取得留言 id
+    const commentId = req.params.commentId;
+
+    // 刪除留言
+    await Comment.findByIdAndDelete(commentId);
+
+    handleSuccess(res, {
+      commentId,
+    });
   })
 );
 
@@ -294,7 +322,13 @@ router.get(
      * #swagger.tags = ['Posts - 貼文']
      * #swagger.description = '取得某個使用者的所有貼文'
      */
+
     const user = req.params.id;
+
+    if (!mongoose.isValidObjectId(user)) {
+      return next(appError(400, "無此 id 或 id 格式錯誤"));
+    }
+
     const posts = await Post.find({ user });
 
     handleSuccess(res, {

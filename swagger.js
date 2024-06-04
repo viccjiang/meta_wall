@@ -6,9 +6,14 @@ const doc = {
     title: "Meta API",
     description: "社群平台 API 文件",
   },
-  host: "localhost:3005",
+
+  // 開發時的 host
+  // host: "localhost:3005", // 這裡要改
+
+  host: "meta-wall-59ug.onrender.com",
+
   basePath: "/",
-  schemes: ["http", "https"],
+  schemes: ["https"],
   securityDefinitions: {
     apiKeyAuth: {
       type: "apiKey",

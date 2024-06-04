@@ -64,6 +64,7 @@ const generateSendJWT = (user, statusCode, res) => {
     user: {
       token,
       name: user.name,
+      message: "該 email 可以使用",
     },
   });
 };

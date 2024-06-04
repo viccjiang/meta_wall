@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
@@ -42,6 +43,12 @@ router.post(
     // 是否為 Email
     if (!validator.isEmail(email)) {
       return next(appError("400", "Email 格式不正確", next));
+    }
+
+    // 使用沒有註冊過的 Email 登入 或是 重複註冊，建議回傳相關錯誤訊息
+    const user = await User.findOne({ email });
+    if (user) {
+      return next(appError("400", "此 Email 已經被註冊", next));
     }
 
     // 加密密碼 bcrypt
@@ -176,6 +183,13 @@ router.post(
      * #swagger.description = '追蹤朋友'
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
+
+    const { id } = req.params;
+
+    if (!mongoose.isValidObjectId(id)) {
+      return next(appError(400, "無此 id 或 id 格式錯誤"));
+    }
+
     // 檢查是否追蹤自己
     if (req.params.id === req.user.id) {
       return next(appError(401, "您無法追蹤自己", next));
@@ -222,9 +236,17 @@ router.delete(
      * #swagger.description = '取消追蹤朋友'
      * #swagger.security = [{ "apiKeyAuth": [] }]
      */
+
+    const { id } = req.params;
+
+    if (!mongoose.isValidObjectId(id)) {
+      return next(appError(400, "無此 id 或 id 格式錯誤"));
+    }
+
     if (req.params.id === req.user.id) {
       return next(appError(401, "您無法取消追蹤自己", next));
     }
+
     // 檢查是否已經追蹤
     await User.updateOne(
       {

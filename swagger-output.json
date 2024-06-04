@@ -5,10 +5,9 @@
     "title": "Meta API",
     "description": "社群平台 API 文件"
   },
-  "host": "localhost:3005",
+  "host": "meta-wall-59ug.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "securityDefinitions": {
@@ -386,9 +385,6 @@
                 "content": {
                   "example": "any"
                 },
-                "user": {
-                  "example": "any"
-                },
                 "photo": {
                   "example": "any"
                 }
@@ -631,7 +627,7 @@
         ]
       }
     },
-    "/posts/{commentId}/comment": {
+    "/posts/comment/{commentId}": {
       "delete": {
         "tags": [
           "Posts - 貼文"

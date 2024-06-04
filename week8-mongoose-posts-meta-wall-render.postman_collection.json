@@ -645,7 +645,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://meta-wall-59ug.onrender.com/posts/664d5583c4ad62eb7d4fb2ed/comment",
+							"raw": "https://meta-wall-59ug.onrender.com/posts/posts/comment/665eaf9dc187ab208491891c",
 							"protocol": "https",
 							"host": [
 								"meta-wall-59ug",
@@ -654,8 +654,9 @@
 							],
 							"path": [
 								"posts",
-								"664d5583c4ad62eb7d4fb2ed",
-								"comment"
+								"posts",
+								"comment",
+								"665eaf9dc187ab208491891c"
 							]
 						}
 					},
