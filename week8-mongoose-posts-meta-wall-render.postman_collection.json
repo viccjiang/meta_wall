@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Jiang002\",\r\n    \"email\":\"jiang002@gmail.com\",\r\n    \"password\":\"jiang002\",\r\n    \"confirmPassword\": \"jiang002\"\r\n}",
+							"raw": "{\r\n    \"name\":\"{{name}}\",\r\n    \"email\":\"{{email}}\",\r\n    \"password\":\"{{password}}\",\r\n    \"confirmPassword\": \"{{password}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"jiang001@gmail.com\",\r\n    \"password\":\"jiang001\"\r\n}",
+							"raw": "{\r\n    \"email\":\"{{email}}\",\r\n    \"password\":\"{{password}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,7 +158,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"jiang2024new\",\r\n    \"confirmPassword\": \"jiang2024new\"\r\n}",
+							"raw": "{\r\n    \"password\":\"{{newPassword}}\",\r\n    \"confirmPassword\": \"{{newPassword}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -785,6 +785,28 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "name",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "newPassword",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
