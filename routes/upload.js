@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const appError = require("../service/appError");
 const handleErrorAsync = require("../service/handleErrorAsync");
-const sizeOf = require("image-size");
+const { imageSize: sizeOf } = require("image-size"); // v2 起改為具名匯出
 const upload = require("../service/image"); // 上傳檔案時 middleware 的一些設定
 const { ImgurClient } = require("imgur"); // Imgur 服務
 
